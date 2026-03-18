@@ -15,54 +15,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Dashboard - AutoVault</title>
+    <title>AutoVault - Profile</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             min-height: 100vh;
             color: #e5e7eb;
-            padding: 30px 15px;
+            overflow-x: hidden;
+            position: relative;
+            padding: 25px;
         }
 
-        .wrapper {
-            max-width: 1100px;
-            margin: auto;
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
         }
 
-        .card {
-            background: #ffffff;
-            color: #1f2937;
-            border-radius: 24px;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .bg-animation span:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
+        .bg-animation span:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; animation-duration: 18s; }
+        .bg-animation span:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+        .bg-animation span:nth-child(6) { left: 75%; width: 110px; height: 110px; animation-delay: 3s; }
+        .bg-animation span:nth-child(7) { left: 35%; width: 150px; height: 150px; animation-delay: 7s; }
+        .bg-animation span:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-delay: 15s; animation-duration: 45s; }
+        .bg-animation span:nth-child(9) { left: 20%; width: 15px; height: 15px; animation-delay: 2s; animation-duration: 35s; }
+        .bg-animation span:nth-child(10) { left: 85%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 11s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 50%; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        @keyframes logoBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            75% { transform: scale(1.1) rotate(-5deg); }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            font-size: 58px;
+            margin-bottom: 8px;
+            animation: logoBounce 2s ease-in-out infinite;
+        }
+
+        .brand-name {
+            font-size: 40px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #9ca3af;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 0 80px rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
             overflow: hidden;
         }
 
-        .banner {
+        .cover {
             height: 120px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.45), rgba(118, 75, 162, 0.45));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .content {
+        .card-body-custom {
             padding: 0 30px 30px;
         }
 
-        .top-section {
+        .profile-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             gap: 20px;
-            margin-top: -55px;
             flex-wrap: wrap;
+            margin-top: -55px;
         }
 
-        .profile-info {
+        .profile-main {
             display: flex;
             align-items: center;
             gap: 18px;
@@ -73,70 +160,101 @@
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
-            border: 4px solid #fff;
+            border: 4px solid #ffffff;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 34px;
-            font-weight: bold;
             color: white;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+            font-size: 34px;
+            font-weight: 800;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.25);
         }
 
         .profile-text h1 {
+            color: #ffffff;
             font-size: 30px;
             margin-bottom: 6px;
-            color: #111827;
         }
 
         .profile-text p {
-            color: #6b7280;
+            color: #cbd5e1;
             font-size: 15px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            border: none;
-            border-radius: 12px;
-            padding: 12px 18px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.25s ease;
-            text-decoration: none;
             display: inline-block;
-            text-align: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
         }
 
-        .btn-primary { background: #3b82f6; color: #fff; }
-        .btn-primary:hover { background: #2563eb; }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
 
-        .btn-secondary { background: #6b7280; color: #fff; }
-        .btn-secondary:hover { background: #4b5563; }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.35);
+        }
 
-        .btn-dark { background: #1f2937; color: #fff; }
-        .btn-dark:hover { background: #111827; }
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
 
-        .btn-danger { background: #ef4444; color: #fff; }
-        .btn-danger:hover { background: #dc2626; }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.14);
+        }
+
+        .btn-dark {
+            background: #1f2937;
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: #111827;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(239, 68, 68, 0.28);
+        }
 
         .alert {
-            margin-top: 20px;
+            border-radius: 14px;
             padding: 14px 16px;
-            border-radius: 12px;
+            margin-top: 22px;
             font-weight: 600;
         }
 
         .alert-success {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #86efac;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
         }
 
         .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
         }
 
         .stats {
@@ -147,54 +265,49 @@
         }
 
         .stat-box {
-            padding: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 18px;
-            border: 1px solid #dbeafe;
-        }
-
-        .stat-blue {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            border-color: #bfdbfe;
-        }
-
-        .stat-green {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border-color: #a7f3d0;
-        }
-
-        .stat-purple {
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border-color: #ddd6fe;
+            padding: 18px;
         }
 
         .stat-label {
             font-size: 13px;
-            color: #4b5563;
+            color: #cbd5e1;
             margin-bottom: 8px;
             font-weight: 600;
         }
 
         .stat-value {
-            font-size: 20px;
+            font-size: 21px;
             font-weight: 700;
-            color: #111827;
+            color: #ffffff;
         }
 
         .badge {
             display: inline-block;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border-radius: 999px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            background: #bbf7d0;
-            color: #166534;
         }
 
-        form {
-            margin-top: 10px;
+        .badge-role {
+            background: rgba(168, 85, 247, 0.18);
+            color: #d8b4fe;
         }
 
-        .grid {
+        .badge-status-active {
+            background: rgba(34, 197, 94, 0.18);
+            color: #86efac;
+        }
+
+        .badge-status-inactive {
+            background: rgba(239, 68, 68, 0.18);
+            color: #fca5a5;
+        }
+
+        .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -206,123 +319,187 @@
         }
 
         .field label {
+            color: #e5e7eb;
+            font-weight: 600;
             margin-bottom: 8px;
             font-size: 14px;
-            font-weight: 600;
-            color: #374151;
         }
 
         .field input {
-            padding: 12px 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 12px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-radius: 14px;
+            padding: 13px 15px;
             font-size: 15px;
-            transition: 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .field input:focus {
-            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
         }
 
-        .field input[readonly],
-        .field input:disabled {
-            background: #f3f4f6;
-            color: #6b7280;
+        .field input[readonly] {
+            color: #cbd5e1;
         }
 
-        .actions {
+        .save-row {
+            margin-top: 24px;
+            display: none;
+        }
+
+        .bottom-actions {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 14px;
             margin-top: 25px;
         }
 
-        .save-row {
-            margin-top: 24px;
+        .footer-text {
+            text-align: center;
+            margin-top: 26px;
+            color: #94a3b8;
+            font-size: 14px;
         }
 
-        .hidden {
-            display: none;
+        .footer-text a {
+            color: #93c5fd;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
         }
 
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.6);
             display: none;
             align-items: center;
             justify-content: center;
             padding: 15px;
+            z-index: 999;
         }
 
-        .modal {
-            background: #fff;
-            color: #111827;
+        .modal-box {
             width: 100%;
             max-width: 430px;
-            border-radius: 18px;
+            background: rgba(15, 12, 41, 0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 22px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
             padding: 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
             text-align: center;
+            color: white;
         }
 
-        .modal h3 {
-            margin-bottom: 12px;
+        .modal-box h3 {
             font-size: 24px;
+            margin-bottom: 12px;
         }
 
-        .modal p {
-            color: #6b7280;
+        .modal-box p {
+            color: #cbd5e1;
+            line-height: 1.6;
             margin-bottom: 22px;
-            line-height: 1.5;
         }
 
-        .modal-buttons {
+        .modal-actions {
             display: flex;
             gap: 12px;
         }
 
-        .modal-buttons .btn {
+        .modal-actions .btn,
+        .modal-actions form {
             flex: 1;
+        }
+
+        .modal-actions form button {
+            width: 100%;
         }
 
         @media (max-width: 900px) {
             .stats,
-            .grid,
-            .actions {
+            .form-grid,
+            .bottom-actions {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .top-section {
-                align-items: center;
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .brand-name {
+                font-size: 32px;
+            }
+
+            .card-body-custom {
+                padding: 0 20px 22px;
             }
 
             .profile-text h1 {
                 font-size: 24px;
             }
+
+            .profile-top {
+                align-items: center;
+            }
+
+            .top-actions {
+                width: 100%;
+            }
+
+            .top-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-<div class="wrapper">
-    <div class="card">
-        <div class="banner"></div>
+<div class="bg-animation">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
 
-        <div class="content">
-            <div class="top-section">
-                <div class="profile-info">
+<div class="container">
+    <div class="logo-container">
+        <div class="logo">🚘</div>
+        <div class="brand-name">AutoVault</div>
+        <div class="tagline">Premium Second Hand Car Marketplace</div>
+    </div>
+
+    <div class="glass-card">
+        <div class="cover"></div>
+
+        <div class="card-body-custom">
+            <div class="profile-top">
+                <div class="profile-main">
                     <div class="avatar">
                         <%= (loggedUser.getFirstName().substring(0,1) + loggedUser.getLastName().substring(0,1)).toUpperCase() %>
                     </div>
+
                     <div class="profile-text">
                         <h1><%= loggedUser.getFirstName() %> <%= loggedUser.getLastName() %></h1>
                         <p>@<%= loggedUser.getUsername() %></p>
                     </div>
                 </div>
 
-                <button type="button" id="editBtn" class="btn btn-primary">Edit Profile</button>
+                <div class="top-actions">
+                    <button type="button" id="editBtn" class="btn btn-primary">Edit Profile</button>
+                </div>
             </div>
 
             <% if ("1".equals(updated)) { %>
@@ -334,19 +511,25 @@
             <% } %>
 
             <div class="stats">
-                <div class="stat-box stat-blue">
+                <div class="stat-box">
                     <div class="stat-label">Role</div>
-                    <div class="stat-value"><%= loggedUser.getRole() %></div>
+                    <div class="stat-value">
+                        <span class="badge badge-role"><%= loggedUser.getRole() %></span>
+                    </div>
                 </div>
 
-                <div class="stat-box stat-green">
+                <div class="stat-box">
                     <div class="stat-label">Status</div>
-                    <div class="badge"><%= loggedUser.getStatus() %></div>
+                    <div class="stat-value">
+                            <span class="badge <%= "Active".equalsIgnoreCase(loggedUser.getStatus()) ? "badge-status-active" : "badge-status-inactive" %>">
+                                <%= loggedUser.getStatus() %>
+                            </span>
+                    </div>
                 </div>
 
-                <div class="stat-box stat-purple">
-                    <div class="stat-label">Access Type</div>
-                    <div class="stat-value"><%= loggedUser.getAccessType() %></div>
+                <div class="stat-box">
+                    <div class="stat-label">User Code</div>
+                    <div class="stat-value"><%= loggedUser.getUserCode() %></div>
                 </div>
             </div>
 
@@ -354,84 +537,86 @@
                 <input type="hidden" name="action" value="update">
                 <input type="hidden" name="id" value="<%= loggedUser.getId() %>">
 
-                <div class="grid">
+                <div class="form-grid">
                     <div class="field">
                         <label>User Code</label>
-                        <input type="text" name="userCode" value="<%= loggedUser.getUserCode() %>" readonly class="editable">
+                        <input type="text" name="userCode" value="<%= loggedUser.getUserCode() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Username</label>
-                        <input type="text" name="username" value="<%= loggedUser.getUsername() %>" readonly class="editable">
+                        <input type="text" name="username" class="editable" value="<%= loggedUser.getUsername() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>First Name</label>
-                        <input type="text" name="firstName" value="<%= loggedUser.getFirstName() %>" readonly class="editable">
+                        <input type="text" name="firstName" class="editable" value="<%= loggedUser.getFirstName() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Last Name</label>
-                        <input type="text" name="lastName" value="<%= loggedUser.getLastName() %>" readonly class="editable">
+                        <input type="text" name="lastName" class="editable" value="<%= loggedUser.getLastName() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Email</label>
-                        <input type="email" name="email" value="<%= loggedUser.getEmail() %>" readonly class="editable">
+                        <input type="email" name="email" class="editable" value="<%= loggedUser.getEmail() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Phone</label>
-                        <input type="text" name="phone" value="<%= loggedUser.getPhone() %>" readonly class="editable">
+                        <input type="text" name="phone" class="editable" value="<%= loggedUser.getPhone() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Password</label>
-                        <input type="text" name="password" value="<%= loggedUser.getPassword() %>" readonly class="editable">
+                        <input type="text" name="password" class="editable" value="<%= loggedUser.getPassword() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Role</label>
-                        <input type="text" name="role" value="<%= loggedUser.getRole() %>" readonly class="editable">
+                        <input type="text" name="role" value="<%= loggedUser.getRole() %>" readonly>
                     </div>
 
                     <div class="field">
                         <label>Status</label>
                         <input type="text" name="status" value="<%= loggedUser.getStatus() %>" readonly>
                     </div>
-
-                    <div class="field">
-                        <label>Access Type</label>
-                        <input type="text" value="<%= loggedUser.getAccessType() %>" readonly>
-                    </div>
                 </div>
 
-                <div class="save-row hidden" id="saveRow">
+                <div class="save-row" id="saveRow">
                     <button type="submit" class="btn btn-primary" style="width:100%;">Save Changes</button>
                 </div>
             </form>
 
-            <div class="actions">
+            <div class="bottom-actions">
                 <a href="${pageContext.request.contextPath}/user?action=list" class="btn btn-dark">View All Users</a>
                 <a href="${pageContext.request.contextPath}/user?action=logout" class="btn btn-secondary">Logout</a>
                 <button type="button" class="btn btn-danger" id="deleteBtn">Delete Account</button>
             </div>
         </div>
     </div>
+
+    <div class="footer-text">
+        <p>User Profile • AutoVault • 2026</p>
+        <p style="margin-top:8px;">
+            <a href="${pageContext.request.contextPath}/index.jsp">Back to Dashboard</a>
+        </p>
+    </div>
 </div>
 
 <div class="modal-overlay" id="deleteModal">
-    <div class="modal">
+    <div class="modal-box">
         <h3>Delete Account</h3>
         <p>Are you sure you want to delete your account? This action cannot be undone.</p>
 
-        <div class="modal-buttons">
+        <div class="modal-actions">
             <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
 
-            <form action="${pageContext.request.contextPath}/user" method="post" style="flex:1;">
+            <form action="${pageContext.request.contextPath}/user" method="post">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="id" value="<%= loggedUser.getId() %>">
-                <button type="submit" class="btn btn-danger" style="width:100%;">Delete</button>
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
         </div>
     </div>
@@ -454,7 +639,7 @@
             field.readOnly = !editing;
         });
 
-        saveRow.classList.toggle("hidden", !editing);
+        saveRow.style.display = editing ? "block" : "none";
         editBtn.textContent = editing ? "Cancel Edit" : "Edit Profile";
         editBtn.className = editing ? "btn btn-secondary" : "btn btn-primary";
     });
