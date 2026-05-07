@@ -1,0 +1,6 @@
+U001|Nimal Perera|nimal@gmail.com|hashed001|0711111111|Kandy|Buyer|Active|Approved|2026-05-01
+U002|Sunil Silva|sunil@gmail.com|hashed002|0777777777|Colombo|Seller|Active|Approved|2026-05-02
+U003|Kamal Motors|kamal@gmail.com|hashed003|0712345678|Colombo|Dealer|Active|Approved|2026-05-03
+U004|Ruwan Fernando|ruwan@gmail.com|hashed004|0723456789|Galle|Seller|Active|Approved|2026-05-04
+U005|Lanka Auto Dealers|lanka@gmail.com|hashed005|0734567890|Negombo|Dealer|Active|Pending|2026-05-05
+U006|Admin User|admin@gmail.com|hashed006|0700000000|Colombo|Admin|Active|Approved|2026-05-01

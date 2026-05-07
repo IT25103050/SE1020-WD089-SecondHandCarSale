@@ -1,0 +1,10 @@
+C001|U002|Toyota|Aqua|2018|4500000|65000|Petrol|Automatic|Colombo|Good|Good condition car|uploads/aqua.jpg|Available|Approved|2026-05-05
+C002|U002|Honda|Civic|2019|6500000|45000|Petrol|Automatic|Colombo|Excellent|Well maintained|uploads/civic.jpg|Available|Approved|2026-05-05
+C003|U002|Suzuki|Swift|2017|3200000|80000|Petrol|Manual|Colombo|Good|Low mileage|uploads/swift.jpg|Sold|Approved|2026-05-04
+C004|U002|Nissan|March|2020|3800000|30000|Petrol|Automatic|Colombo|Excellent|Like new|uploads/march.jpg|Available|Pending|2026-05-05
+C005|U003|Toyota|Corolla|2021|9500000|25000|Petrol|Automatic|Colombo|Excellent|Dealer certified|uploads/corolla.jpg|Available|Approved|2026-05-03
+C006|U003|Honda|Fit|2019|5200000|55000|Petrol|Automatic|Colombo|Good|Regular service done|uploads/fit.jpg|Available|Approved|2026-05-03
+C007|U003|BMW|320i|2018|12000000|60000|Petrol|Automatic|Colombo|Excellent|Premium vehicle|uploads/bmw.jpg|Sold|Approved|2026-05-02
+C008|U003|Mercedes|C200|2020|15000000|35000|Diesel|Automatic|Colombo|Excellent|Full option|uploads/benz.jpg|Available|Pending|2026-05-05
+C009|U004|Toyota|Vitz|2016|3000000|90000|Petrol|Automatic|Galle|Good|Family car|uploads/vitz.jpg|Available|Approved|2026-05-04
+C010|U004|Hyundai|Tucson|2020|8500000|40000|Diesel|Automatic|Galle|Excellent|SUV in great shape|uploads/tucson.jpg|Available|Approved|2026-05-04
