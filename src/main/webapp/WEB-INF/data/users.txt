@@ -1,0 +1,4 @@
+U001|John Silva|john@gmail.com|ef92b778bafe771e89245b89ecbc08a44a4e166c7b1fac2ad6c88b44c5c3d4aa|0771234567|Colombo|Buyer|Active|Approved|2026-05-07
+U002|Kamal Motors|kamal@gmail.com|ef92b778bafe771e89245b89ecbc08a44a4e166c7b1fac2ad6c88b44c5c3d4aa|0777777777|Colombo|Seller|Active|Approved|2026-05-07
+U003|City Cars|citycars@gmail.com|ef92b778bafe771e89245b89ecbc08a44a4e166c7b1fac2ad6c88b44c5c3d4aa|0711111111|Kandy|Dealer|Active|Pending|2026-05-07
+U004|Admin User|admin@gmail.com|ef92b778bafe771e89245b89ecbc08a44a4e166c7b1fac2ad6c88b44c5c3d4aa|0700000000|Colombo|Admin|Active|Approved|2026-05-07
