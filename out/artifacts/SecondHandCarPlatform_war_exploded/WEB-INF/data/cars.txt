@@ -1,0 +1,2 @@
+C001|U002|Toyota|Aqua|2018|4500000|65000|Petrol|Automatic|Colombo|Good|Excellent condition hybrid car|uploads/aqua.jpg|Available|Approved|2026-04-30
+C002|U003|Honda|Civic|2020|7800000|40000|Petrol|Automatic|Kandy|Excellent|Almost new, first owner|uploads/civic.jpg|Available|Approved|2026-04-30

@@ -1,0 +1,4 @@
+U001|John Silva|buyer@gmail.com|8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92|0771234567|Colombo|Buyer|Active|Approved|2026-04-30
+U002|Jane Doe|seller@gmail.com|8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92|0779876543|Kandy|Seller|Active|Approved|2026-04-30
+U003|Mike Dealer|dealer@gmail.com|8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92|0711122334|Galle|Dealer|Active|Approved|2026-04-30
+U004|Admin Boss|admin@gmail.com|8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92|0755566778|Colombo|Admin|Active|Approved|2026-04-30
