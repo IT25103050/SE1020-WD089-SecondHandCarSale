@@ -1,0 +1,3 @@
+U001|John Silva|john@gmail.com|hashed123|0771234567|Colombo|Buyer|Active|Approved|2026-05-05
+U002|Kamal Motors|kamal@gmail.com|hashed123|0777777777|Colombo|Dealer|Active|Pending|2026-05-05
+U003|Admin User|admin@automart.com|hashed123|0711111111|Colombo|Admin|Active|Approved|2026-05-05
