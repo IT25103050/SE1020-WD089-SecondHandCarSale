@@ -1,0 +1,2 @@
+T001|U001|C001|U002|2026-05-05|Pending|Cash|Unpaid
+T002|U001|C003|U004|2026-05-06|Completed|Bank Transfer|Paid

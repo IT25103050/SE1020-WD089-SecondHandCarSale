@@ -1,123 +1,62 @@
-<div align="center">
+# AutoMart - Second-Hand Car Sales and Purchase Platform
 
-# 🚗💨 Second-Hand Car Sales & Purchase Platform
+## Description
+AutoMart is a complete Java-based web application for buying and selling second-hand cars. This project is built using object-oriented principles, Java Servlets, JSP, and uses simple `.txt` files for database simulation.
 
-### 📚 SE1020 – Object Oriented Programming Project  
-### 👨‍💻 Group WD089
+This system facilitates four major user roles:
+1. **Buyers**: Can browse cars, search/filter, request to buy, pay for cars, and submit reviews for cars or sellers.
+2. **Sellers**: Can add their own cars for sale, manage their listings, approve purchase requests, and mark transactions as completed.
+3. **Dealers**: Similar to sellers but require an initial admin approval to be verified as an official dealer. They can maintain a large inventory.
+4. **Admins**: Monitor and moderate the platform. Admins approve cars and dealer accounts, manage all users, transactions, and moderate reviews.
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=0EA5E9&center=true&vCenter=true&width=800&lines=Buy+and+Sell+Second-Hand+Cars+Online;Built+with+Java+%7C+JSP+%7C+Servlets+%7C+Spring+Boot;Role-Based+Access+for+Buyers%2C+Sellers%2FDealers+and+Admins;OOP+Project+by+Group+WD089" alt="Typing SVG" />
+## Architecture & Technology Stack
+*   **Language**: Java 11+
+*   **Web Framework**: Java Servlets & JSP (JavaServer Pages)
+*   **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5
+*   **Data Persistence**: `.txt` file handling
+*   **Build Tool**: Maven
 
-<br>
+## Object-Oriented Principles (OOP)
+This project is built using Object-Oriented Programming (OOP) concepts:
+*   **Encapsulation**: Models (`User`, `Car`, `Transaction`) have private fields with public getter/setter methods.
+*   **Inheritance**: `Buyer`, `Seller`, `Dealer`, and `Admin` classes inherit from the base abstract `User` class. `CarReview` and `SellerReview` inherit from `Review`. `CashPayment` and `OnlinePayment` inherit from `Payment`.
+*   **Polymorphism**: Overridden `getRole()` and `processPayment()` methods demonstrate polymorphic behavior.
+*   **Abstraction**: Abstract classes like `User` and `Payment` define templates without implementing instances directly.
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![JSP](https://img.shields.io/badge/JSP-Java_Web-blue?style=for-the-badge)
-![Servlets](https://img.shields.io/badge/Servlets-Jakarta-orange?style=for-the-badge)
-![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white)
-![IntelliJ IDEA](https://img.shields.io/badge/IDE-IntelliJ_IDEA-black?style=for-the-badge&logo=intellijidea)
-![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?style=for-the-badge&logo=github)
+## Structure
+The application follows the Model-View-Controller (MVC) architectural pattern:
+*   **Model (`com.carplatform.model`)**: Contains business entities.
+*   **View (`src/main/webapp`)**: JSP files serve as the presentation layer. 
+*   **Controller (`com.carplatform.servlet`)**: Servlets handle the HTTP request-response flow.
+*   **DAO (`com.carplatform.dao`)**: Data Access Objects that interface with text files for data persistence.
+*   **Util (`com.carplatform.util`)**: Helper classes for ID generation, file handling, and password hashing.
 
-</div>
+## Setup Instructions
 
----
+### Prerequisites
+*   Java Development Kit (JDK) 11 or higher
+*   Apache Tomcat 9.x
+*   IntelliJ IDEA (or Eclipse)
+*   Maven
 
-## 🌟 Project Overview
+### Running Locally with IntelliJ IDEA
+1. Open the project folder in IntelliJ IDEA.
+2. Mark `src/main/java` as Sources Root if it isn't automatically.
+3. Add a **Tomcat Server (Local)** Run Configuration:
+   - Click `Add Configuration` -> `Tomcat Server` -> `Local`.
+   - Point the Application Server to your Tomcat 9 installation folder.
+   - Go to the `Deployment` tab, add an artifact for the project (`war exploded`).
+   - Run the application.
+4. The application will be accessible at `http://localhost:8080/`.
 
-The **Second-Hand Car Sales & Purchase Platform** is a web-based system developed for the **SE1020 Object Oriented Programming module**.
+### Default Accounts
+Since the project relies on text files, you may easily register your own accounts, or use the preconfigured ones in `/WEB-INF/data/users.txt` once they're created dynamically. Ensure there's at least one admin account manually given the 'Admin' role in the text file if needed. By default, newly registered Admins are automatically verified.
 
-This platform allows users to **buy and sell second-hand cars** efficiently through a role-based system with separate access for:
-
-- 👤 **Buyers**
-- 🏪 **Sellers / Dealers**
-- 🛡 **Admins**
-
-The project is built using **Java web technologies** and applies core **Object-Oriented Programming concepts** such as encapsulation, inheritance, polymorphism, and abstraction.
-
----
-
-## 🎯 Project Objectives
-
-- Build a complete **car sales management system**
-- Apply **OOP principles** in a real-world software solution
-- Implement **CRUD operations** across all project modules
-- Develop a clean and organized **web interface**
-- Practice **team collaboration** using GitHub
-- Maintain proper **documentation and version control**
-
----
-
-## ✨ Main Features
-
-### 👤 User Management
-- User registration
-- User login/logout
-- Profile management
-- Role-based access handling
-
-### 🚘 Car Listing Management
-- Add new car listings
-- View available cars
-- Update car details
-- Delete car advertisements
-
-### 🔎 Filtering Management
-Users can search and filter cars by:
-- 💰 Price
-- 📅 Year
-- 🛣 Mileage
-- ⛽ Fuel Type
-- ⚙️ Transmission
-- 📍 Location
-- 🔧 Condition
-
-### 💳 Transaction Management
-- Record purchases
-- Manage buyer and seller transactions
-- Track payment and transaction status
-
-### 🛡 Admin Management
-- Manage users
-- Moderate car listings
-- Monitor platform activities
-- Approve or remove content
-
-### 🏪 Seller / Dealer Management
-- Manage seller/dealer profiles
-- Handle seller inventory
-- View and update posted cars
-
-### ⭐ Review and Rating Management
-- Add seller/car reviews
-- Give ratings
-- Manage and moderate review content
-
----
-
-## 👨‍👩‍👧‍👦 Workload Distribution
-
-| Member | Module | Description | Main Table(s) |
-|--------|--------|-------------|---------------|
-| 1 | 👤 User Management | Registration, login, profile CRUD | `users` |
-| 2 | 🚘 Car Listing Management | Add, view, edit, delete car listings | `cars` |
-| 3 | 💳 Transaction Management | Handle transactions and payment status | `transactions` |
-| 4 | 🛡 Admin Management | Admin controls, moderation, approvals | `admins` |
-| 5 | 🏪 Seller / Dealer Management | Seller/dealer profile and inventory | `sellers`, `cars` |
-| 6 | ⭐ Review, Rating & Filtering | Reviews, ratings, search and filters | `reviews`, `cars` |
-
-> 📌 Each member is expected to complete at least **3 CRUD operations** and **3 UI pages** for their assigned module.
-
----
-
-## 🛠 Tech Stack
-
-| Category | Technology |
-|----------|------------|
-| 💻 IDE | IntelliJ IDEA |
-| ⚙️ Backend | Java |
-| 🌐 Web Technologies | JSP / Servlets / Spring Boot |
-| 🎨 Frontend | HTML, CSS, JavaScript |
-| 🧩 UI Framework | Bootstrap / Tailwind CSS |
-| 🗄 Database | MySQL |
-| 🔧 Version Control | Git + GitHub |
-
----
+## Contribution & GitHub Commit Plan
+1. **Module 1 (Backend & Models)**: Set up Java models, abstract classes, and utility functions (File handling).
+2. **Module 2 (DAOs)**: Develop File-based Data Access Objects for persistence.
+3. **Module 3 (Auth and Users)**: Build login, registration, and user-type specific dashboards.
+4. **Module 4 (Car Management)**: Implement Add, Edit, Delete, Read capabilities for vehicles.
+5. **Module 5 (Transactions & Payments)**: Establish the logic for buy-requests and payment simulation.
+6. **Module 6 (Admin & Moderation)**: Include comprehensive admin functionalities for approvals and user suspensions.
+7. **Module 7 (UI/UX Setup)**: Craft the JSPs alongside Bootstrap configuration for an elegant visual design.
