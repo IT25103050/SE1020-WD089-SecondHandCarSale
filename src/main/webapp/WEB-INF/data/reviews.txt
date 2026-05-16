@@ -1,2 +1,0 @@
-R001|U001|C001|U002|5|Good seller and car|Car|2026-05-05
-R002|U005|C003|U004|4|Smooth transaction|Dealer|2026-05-06

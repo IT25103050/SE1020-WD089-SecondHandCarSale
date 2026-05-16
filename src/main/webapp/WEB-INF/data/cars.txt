@@ -1,3 +1,0 @@
-C001|U002|Toyota|Aqua|2018|4500000|65000|Petrol|Automatic|Colombo|Good|Good condition car|uploads/aqua.jpg|Available|Pending|2026-05-05
-C002|U002|Honda|Vezel|2019|6500000|45000|Hybrid|Automatic|Colombo|Excellent|Like new|uploads/vezel.jpg|Available|Approved|2026-05-06
-C003|U004|Suzuki|Swift|2017|3500000|80000|Petrol|Automatic|Kandy|Good|Runs great|uploads/swift.jpg|Sold|Approved|2026-05-04
