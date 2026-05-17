@@ -1,77 +1,74 @@
 package com.carplatform.util;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.*;
+import java.util.*;
 
-/**
- * FileHandler utility class.
- * Handles all TXT file read/write operations.
- * Creates files and directories if they do not exist.
- */
 public class FileHandler {
 
     /**
-     * Reads all lines from a TXT file.
-     * If the file does not exist, creates it and returns an empty list.
-     * Skips blank lines.
+     * Ensures that the specified file exists. If it does not exist,
+     * creates the necessary parent directories and the empty file.
      */
-    public static List<String> readAllLines(String filePath) {
-        List<String> lines = new ArrayList<>();
-        File file = new File(filePath);
-
-        // Create parent directories and file if they do not exist
+    public static void ensureFileExists(String path) {
         try {
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
-            if (!file.exists()) {
-                file.createNewFile();
-                return lines; // Return empty list for new file
+            Path filePath = Paths.get(path);
+            if (!Files.exists(filePath)) {
+                if (filePath.getParent() != null) {
+                    Files.createDirectories(filePath.getParent());
+                }
+                Files.createFile(filePath);
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            return lines;
+            System.err.println("Error ensuring file exists: " + e.getMessage());
         }
+    }
 
-        // Read file line by line
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+    /**
+     * Reads all lines from the specified file path.
+     */
+    public static List<String> readAllLines(String path) {
+        ensureFileExists(path);
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Skip blank lines
+                // Keep useful trimmed or un-trimmed rows, ignore completely blank rows
                 if (!line.trim().isEmpty()) {
                     lines.add(line);
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error reading lines from file: " + e.getMessage());
         }
-
         return lines;
     }
 
     /**
-     * Writes all lines to a TXT file (overwrites existing content).
-     * Creates the file and parent directories if they do not exist.
+     * Appends a single line to the end of the specified file.
      */
-    public static void writeAllLines(String filePath, List<String> lines) {
-        File file = new File(filePath);
-
-        try {
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public static void writeLine(String path, String line) {
+        ensureFileExists(path);
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(path), StandardOpenOption.APPEND)) {
+            writer.write(line);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Error writing line to file: " + e.getMessage());
         }
+    }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+    /**
+     * Overwrites the specified file entirely with the provided list of lines.
+     */
+    public static void overwriteFile(String path, List<String> lines) {
+        ensureFileExists(path);
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(path), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE)) {
             for (String line : lines) {
                 writer.write(line);
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error overwriting file: " + e.getMessage());
         }
     }
 }

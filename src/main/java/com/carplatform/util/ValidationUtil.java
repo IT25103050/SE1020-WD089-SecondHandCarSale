@@ -1,46 +1,39 @@
 package com.carplatform.util;
 
-/**
- * ValidationUtil utility class.
- * Provides basic validation methods for seller/dealer profile fields.
- */
 public class ValidationUtil {
 
     /**
-     * Checks if a string is null or empty (after trimming).
+     * Checks if a string value is null, empty, or consists only of whitespace.
      */
     public static boolean isEmpty(String value) {
         return value == null || value.trim().isEmpty();
     }
 
     /**
-     * Validates phone number format.
-     * Must start with 0 and be 10 digits long.
-     */
-    public static boolean isValidPhone(String phone) {
-        if (isEmpty(phone)) {
-            return false;
-        }
-        return phone.matches("^0\\d{9}$");
-    }
-
-    /**
-     * Validates email format using a basic pattern.
+     * Validates an email address format using basic standard checks.
      */
     public static boolean isValidEmail(String email) {
-        if (isEmpty(email)) {
-            return false;
-        }
-        return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+        if (isEmpty(email)) return false;
+        return email.contains("@") && email.contains(".");
     }
 
     /**
-     * Validates that address is not empty and has reasonable length.
+     * Checks if a string value represents a strictly positive numeric amount.
      */
-    public static boolean isValidAddress(String address) {
-        if (isEmpty(address)) {
+    public static boolean isPositiveNumber(String value) {
+        if (isEmpty(value)) return false;
+        try {
+            double num = Double.parseDouble(value.trim());
+            return num > 0;
+        } catch (NumberFormatException e) {
             return false;
         }
-        return address.trim().length() >= 3 && address.trim().length() <= 200;
+    }
+
+    /**
+     * Validates if a rating integer falls within the standard 1 to 5 bounds.
+     */
+    public static boolean isValidRating(int rating) {
+        return rating >= 1 && rating <= 5;
     }
 }

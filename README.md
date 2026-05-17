@@ -1,123 +1,88 @@
-<div align="center">
+# 🏎️ AutoMart | Seller & Dealer Management Module
 
-# 🚗💨 Second-Hand Car Sales & Purchase Platform
+[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![JSP](https://img.shields.io/badge/View-JSP%20%2F%20JSTL-blue.svg)](https://jakarta.ee/specifications/pages/3.0/)
 
-### 📚 SE1020 – Object Oriented Programming Project  
-### 👨‍💻 Group WD089
-
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=0EA5E9&center=true&vCenter=true&width=800&lines=Buy+and+Sell+Second-Hand+Cars+Online;Built+with+Java+%7C+JSP+%7C+Servlets+%7C+Spring+Boot;Role-Based+Access+for+Buyers%2C+Sellers%2FDealers+and+Admins;OOP+Project+by+Group+WD089" alt="Typing SVG" />
-
-<br>
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-![JSP](https://img.shields.io/badge/JSP-Java_Web-blue?style=for-the-badge)
-![Servlets](https://img.shields.io/badge/Servlets-Jakarta-orange?style=for-the-badge)
-![MySQL](https://img.shields.io/badge/MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white)
-![IntelliJ IDEA](https://img.shields.io/badge/IDE-IntelliJ_IDEA-black?style=for-the-badge&logo=intellijidea)
-![GitHub](https://img.shields.io/badge/GitHub-Version_Control-181717?style=for-the-badge&logo=github)
-
-</div>
+**AutoMart Seller/Dealer Management** is a high-performance, specialized module designed for the AutoMart ecosystem. It provides a robust, enterprise-grade interface for merchants and certified dealerships to manage their vehicle fleets, track listings, and interact with the platform's core services.
 
 ---
 
-## 🌟 Project Overview
+## 🌟 Key Features
 
-The **Second-Hand Car Sales & Purchase Platform** is a web-based system developed for the **SE1020 Object Oriented Programming module**.
+### 🏢 Merchant Dashboards
+- **Seller Dashboard**: A streamlined interface for individual sellers to manage their private listings.
+- **Dealer Dashboard**: An enterprise-certified showroom interface for professional dealerships.
+- **Dynamic Stats**: Real-time tracking of active listings and pending requests.
 
-This platform allows users to **buy and sell second-hand cars** efficiently through a role-based system with separate access for:
+### 🚗 Inventory Lifecycle
+- **Asset Creation**: Support for multi-part image uploads and detailed vehicle specifications.
+- **Live Modifiers**: Real-time updates for pricing, mileage, and availability status.
+- **Polymorphic Categorization**: Specialized handling for Petrol, Diesel, and Electric vehicle types.
 
-- 👤 **Buyers**
-- 🏪 **Sellers / Dealers**
-- 🛡 **Admins**
-
-The project is built using **Java web technologies** and applies core **Object-Oriented Programming concepts** such as encapsulation, inheritance, polymorphism, and abstraction.
-
----
-
-## 🎯 Project Objectives
-
-- Build a complete **car sales management system**
-- Apply **OOP principles** in a real-world software solution
-- Implement **CRUD operations** across all project modules
-- Develop a clean and organized **web interface**
-- Practice **team collaboration** using GitHub
-- Maintain proper **documentation and version control**
+### 🛡️ Secure Access
+- **Role-Based Routing**: Strict access control for Seller and Dealer roles.
+- **Session Security**: State-managed authentication using secure session bindings.
+- **Hashed Persistence**: SHA-256 password security for all merchant accounts.
 
 ---
 
-## ✨ Main Features
+## 🛠️ Technology Stack
 
-### 👤 User Management
-- User registration
-- User login/logout
-- Profile management
-- Role-based access handling
-
-### 🚘 Car Listing Management
-- Add new car listings
-- View available cars
-- Update car details
-- Delete car advertisements
-
-### 🔎 Filtering Management
-Users can search and filter cars by:
-- 💰 Price
-- 📅 Year
-- 🛣 Mileage
-- ⛽ Fuel Type
-- ⚙️ Transmission
-- 📍 Location
-- 🔧 Condition
-
-### 💳 Transaction Management
-- Record purchases
-- Manage buyer and seller transactions
-- Track payment and transaction status
-
-### 🛡 Admin Management
-- Manage users
-- Moderate car listings
-- Monitor platform activities
-- Approve or remove content
-
-### 🏪 Seller / Dealer Management
-- Manage seller/dealer profiles
-- Handle seller inventory
-- View and update posted cars
-
-### ⭐ Review and Rating Management
-- Add seller/car reviews
-- Give ratings
-- Manage and moderate review content
+| Component | Technology |
+| :--- | :--- |
+| **Backend Core** | Java 17, Spring Boot 3.x |
+| **Web Tier** | Spring MVC, JSP, JSTL |
+| **Aesthetics** | Vanilla CSS (Glassmorphism, Modern Gradients) |
+| **Data Tier** | Streamed Pipe-Delimited Persistence (Flat File) |
+| **Utilities** | Jakarta Servlet API, Apache Tomcat Jasper |
 
 ---
 
-## 👨‍👩‍👧‍👦 Workload Distribution
+## 🏗️ Architecture & File Structure
 
-| Member | Module | Description | Main Table(s) |
-|--------|--------|-------------|---------------|
-| 1 | 👤 User Management | Registration, login, profile CRUD | `users` |
-| 2 | 🚘 Car Listing Management | Add, view, edit, delete car listings | `cars` |
-| 3 | 💳 Transaction Management | Handle transactions and payment status | `transactions` |
-| 4 | 🛡 Admin Management | Admin controls, moderation, approvals | `admins` |
-| 5 | 🏪 Seller / Dealer Management | Seller/dealer profile and inventory | `sellers`, `cars` |
-| 6 | ⭐ Review, Rating & Filtering | Reviews, ratings, search and filters | `reviews`, `cars` |
+The project implements a clean domain-driven module structure organized within the base namespace `com.carplatform`:
 
-> 📌 Each member is expected to complete at least **3 CRUD operations** and **3 UI pages** for their assigned module.
+```text
+Seller  Dealer Management/
+├── src/main/java/com/carplatform/
+│   ├── controller/               <-- Web tier (Auth, Dashboard, Car, SellerDealer)
+│   ├── dao/                      <-- Data Access (User, Car, Transaction, Review)
+│   ├── model/                    <-- Domain Objects (User, Car, Transaction, Review)
+│   └── util/                     <-- Utilities (FileHandler, Security, Validation)
+├── src/main/webapp/
+│   ├── WEB-INF/jsp/              <-- Secure View Components
+│   ├── css/                      <-- Premium Styling
+│   └── js/                       <-- Interactive Hooks
+└── pom.xml                       <-- Dependency Manifest
+```
+
+---
+
+## 🧬 OOP Excellence
+
+The architecture rigorously maintains full **Polymorphic mapping** to ensure clear decoupling between runtime memory states and file-backed storage records:
+
+- **Encapsulation**: Private/protected modifiers with pure getters/setters.
+- **Abstraction**: Base classes (`User`, `Car`, `Review`) defining core templates.
+- **Inheritance**: Subclasses (`Seller`, `Dealer`, `ElectricCar`, etc.) extending specific behaviors.
+- **Polymorphism**: Dynamic routing and specialized logic for different merchant types.
 
 ---
 
-## 🛠 Tech Stack
+## 💾 Data Persistence Schemas
 
-| Category | Technology |
-|----------|------------|
-| 💻 IDE | IntelliJ IDEA |
-| ⚙️ Backend | Java |
-| 🌐 Web Technologies | JSP / Servlets / Spring Boot |
-| 🎨 Frontend | HTML, CSS, JavaScript |
-| 🧩 UI Framework | Bootstrap / Tailwind CSS |
-| 🗄 Database | MySQL |
-| 🔧 Version Control | Git + GitHub |
+### 👤 User Schema (`users.txt`)
+`[userId]|[fullName]|[email]|[passwordHash]|[phone]|[address]|[role]|[accountStatus]|[approvalStatus]|[createdAt]`
+- Roles: `Seller`, `Dealer`
+- Status: `ACTIVE` / `SUSPENDED`
+
+### 🚘 Car Schema (`cars.txt`)
+`[carId]|[sellerId]|[brand]|[model]|[year]|[price]|[mileage]|[fuelType]|[transmission]|[location]|[condition]|[description]|[imagePath]|[carStatus]|[approvalStatus]|[createdAt]`
+- Types: `Petrol`, `Diesel`, `Electric`
 
 ---
+
+
+---
+*Engineered by Antigravity Core Telemetry Agent.*

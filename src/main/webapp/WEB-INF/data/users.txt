@@ -1,6 +1,5 @@
-U001|Nimal Perera|nimal@gmail.com|hashed001|0711111111|Kandy|Buyer|Active|Approved|2026-05-01
-U002|Sunil Silva|sunil@gmail.com|hashed002|0777777777|Colombo|Seller|Active|Approved|2026-05-02
-U003|Kamal Motors|kamal@gmail.com|hashed003|0712345678|Colombo|Dealer|Active|Approved|2026-05-03
-U004|Ruwan Fernando|ruwan@gmail.com|hashed004|0723456789|Galle|Seller|Active|Approved|2026-05-04
-U005|Lanka Auto Dealers|lanka@gmail.com|hashed005|0734567890|Negombo|Dealer|Active|Pending|2026-05-05
-U006|Admin User|admin@gmail.com|hashed006|0700000000|Colombo|Admin|Active|Approved|2026-05-01
+USR1001|Ajith Perera|buyer@automart.com|ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f|0771112223|Colombo 03|Buyer|ACTIVE|APPROVED|2024-01-10
+USR1002|Sunil Gamage|seller@automart.com|ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f|0772223334|Kandy City Center|Seller|ACTIVE|APPROVED|2024-01-12
+USR1003|Sampath Dealers|dealer@automart.com|ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f|0773334445|Nawala Road, Rajagiriya|Dealer|ACTIVE|APPROVED|2024-01-15
+USR1004|System Administrator|admin@automart.com|ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f|0112999888|Lotus Road, Colombo 01|Admin|ACTIVE|APPROVED|2024-01-01
+USR1005|Sahan Motors|pending@automart.com|ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f|0914445556|Galle Road, Galle|Dealer|ACTIVE|PENDING|2024-02-01

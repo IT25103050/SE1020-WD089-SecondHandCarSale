@@ -1,10 +1,17 @@
-C001|U002|Toyota|Aqua|2018|4500000|65000|Petrol|Automatic|Colombo|Good|Good condition car|uploads/aqua.jpg|Available|Approved|2026-05-05
-C002|U002|Honda|Civic|2019|6500000|45000|Petrol|Automatic|Colombo|Excellent|Well maintained|uploads/civic.jpg|Available|Approved|2026-05-05
-C003|U002|Suzuki|Swift|2017|3200000|80000|Petrol|Manual|Colombo|Good|Low mileage|uploads/swift.jpg|Sold|Approved|2026-05-04
-C004|U002|Nissan|March|2020|3800000|30000|Petrol|Automatic|Colombo|Excellent|Like new|uploads/march.jpg|Available|Pending|2026-05-05
-C005|U003|Toyota|Corolla|2021|9500000|25000|Petrol|Automatic|Colombo|Excellent|Dealer certified|uploads/corolla.jpg|Available|Approved|2026-05-03
-C006|U003|Honda|Fit|2019|5200000|55000|Petrol|Automatic|Colombo|Good|Regular service done|uploads/fit.jpg|Available|Approved|2026-05-03
-C007|U003|BMW|320i|2018|12000000|60000|Petrol|Automatic|Colombo|Excellent|Premium vehicle|uploads/bmw.jpg|Sold|Approved|2026-05-02
-C008|U003|Mercedes|C200|2020|15000000|35000|Diesel|Automatic|Colombo|Excellent|Full option|uploads/benz.jpg|Available|Pending|2026-05-05
-C009|U004|Toyota|Vitz|2016|3000000|90000|Petrol|Automatic|Galle|Good|Family car|uploads/vitz.jpg|Available|Approved|2026-05-04
-C010|U004|Hyundai|Tucson|2020|8500000|40000|Diesel|Automatic|Galle|Excellent|SUV in great shape|uploads/tucson.jpg|Available|Approved|2026-05-04
+CAR2001|USR1003|Toyota|Corolla|2018|12500000|42000|Petrol|Automatic|Colombo|Used|Pristine condition.|https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600|AVAILABLE|APPROVED|2024-01-16
+CAR2002|USR1003|Nissan|X-Trail|2017|14800000|58000|Petrol|Automatic|Kandy|Used|Spacious SUV hybrid.|https://images.unsplash.com/photo-1566274360936-692e1ec0f921?w=600|AVAILABLE|APPROVED|2024-01-18
+CAR2003|USR1002|Mazda|Axela|2016|9200000|65000|Petrol|Automatic|Galle|Used|Sporty hatchback.|https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600|AVAILABLE|APPROVED|2024-01-20
+CAR2004|USR1002|Suzuki|Alto|2015|3200000|84000|Petrol|Manual|Colombo|Used|Economical runner.|https://images.unsplash.com/photo-1634543710892-054593f66904?w=600|AVAILABLE|APPROVED|2024-01-22
+CAR2005|USR1003|Mercedes-Benz|E200|2019|32000000|25000|Petrol|Automatic|Colombo|Used|Luxury sedan.|https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600|AVAILABLE|APPROVED|2024-02-05
+CAR2006|USR1002|BMW|520d|2018|28500000|32000|Diesel|Automatic|Negombo|Used|Executive sedan.|https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600|AVAILABLE|APPROVED|2024-02-08
+CAR2007|USR1002|Toyota|Vitz|2017|7800000|45000|Petrol|Automatic|Gampaha|Used|Safety Edition Vitz.|https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=600|AVAILABLE|APPROVED|2024-02-10
+CAR2008|USR1003|Toyota|Land Cruiser|2018|65000000|45000|Diesel|Automatic|Colombo|Used|Luxury SUV.|https://images.unsplash.com/photo-1542362567-b055002b9764?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2009|USR1002|Toyota|Aqua|2015|6500000|78000|Petrol|Automatic|Kandy|Used|Fuel-efficient hybrid.|https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2010|USR1003|Honda|Grace|2017|8200000|52000|Petrol|Automatic|Galle|Used|Comfortable sedan.|https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2011|USR1002|Suzuki|Wagon R|2018|5800000|35000|Petrol|Automatic|Negombo|Used|Stingray model.|https://images.unsplash.com/photo-1567808291548-fc3ee04dbac0?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2012|USR1003|Mitsubishi|Montero|2016|18500000|92000|Diesel|Automatic|Kurunegala|Used|Powerful 4WD SUV.|https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2013|USR1003|Nissan|Leaf|2019|10500000|25000|Electric|Automatic|Colombo|Used|Electric vehicle Leaf.|https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2014|USR1002|Toyota|Prius|2016|9800000|62000|Petrol|Automatic|Matara|Used|4th Gen Prius.|https://images.unsplash.com/photo-1518770660439-4636190af475?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2015|USR1003|Mercedes-Benz|C200|2018|24000000|38000|Petrol|Automatic|Colombo|Used|German engineering sedan.|https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2016|USR1002|Honda|Vezel|2015|8500000|84000|Petrol|Automatic|Gampaha|Used|Popular compact SUV.|https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600|AVAILABLE|APPROVED|2024-05-15
+CAR2017|USR1002|Suzuki|Alto|2019|3800000|21000|Petrol|Manual|Jaffna|Used|Practical hatchback.|https://images.unsplash.com/photo-1634543710892-054593f66904?w=600|AVAILABLE|APPROVED|2024-05-15
