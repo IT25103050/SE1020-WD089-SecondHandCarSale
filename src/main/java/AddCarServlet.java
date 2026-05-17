@@ -4,10 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.io.*;
 
 @WebServlet("/AddCarServlet")
 @MultipartConfig(
@@ -16,46 +13,56 @@ import java.sql.PreparedStatement;
         maxRequestSize = 1024 * 1024 * 50    // 50MB
 )
 public class AddCarServlet extends HttpServlet {
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String brand = request.getParameter("brand");
+            String model = request.getParameter("model");
+            String year = request.getParameter("year");
+            String price = request.getParameter("price");
+            String mileage = request.getParameter("mileage");
+            String fuel = request.getParameter("fuel_type");
 
-        // 1. Get Text Data
-        String brand = request.getParameter("brand");
-        String model = request.getParameter("model");
-        int year = Integer.parseInt(request.getParameter("year"));
-        double price = Double.parseDouble(request.getParameter("price"));
-        int mileage = Integer.parseInt(request.getParameter("mileage"));
-        String fuel = request.getParameter("fuel_type");
+            // 1. Target local server storage path
+            String uploadPath = getServletContext().getRealPath("") + File.separator + "uploaded-images";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
 
-        // 2. Handle the Image File
-        Part filePart = request.getPart("car_image");
-        String fileName = filePart.getSubmittedFileName();
+            // 2. Extract uploaded image from your device form stream
+            Part part = request.getPart("car_image");
+            String fileName = System.currentTimeMillis() + "_" + getFileName(part);
+            String fullSavePath = uploadPath + File.separator + fileName;
+            part.write(fullSavePath);
 
-        // Define where to save the image on your computer
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "images";
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdir(); // Create 'images' folder if missing
+            // 3. Form dynamic URL reference route
+            String imageUrl = "uploaded-images/" + fileName;
 
-        // Save the actual file to the folder
-        filePart.write(uploadPath + File.separator + fileName);
-        String dbImagePath = "images/" + fileName; // This is the path for the DB
+            // Generate row array matching system criteria layout string indexes
+            String carId = "CAR" + String.valueOf(System.currentTimeMillis()).substring(8);
+            String carRecord = String.format("%s|USR1009|%s|%s|%s|%s|%s|%s|Auto|Colombo|Used|Good|%s|AVAILABLE|APPROVED|2026-05-17",
+                    carId, brand, model, year, price, mileage, fuel, imageUrl);
 
-        try (Connection conn = DBConnection.getConnection()) {
-            // 3. Save to DB (Including the image_url)
-            String sql = "INSERT INTO cars (brand, model, manufacture_year, price, mileage, fuel_type, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, brand);
-            ps.setString(2, model);
-            ps.setInt(3, year);
-            ps.setDouble(4, price);
-            ps.setInt(5, mileage);
-            ps.setString(6, fuel);
-            ps.setString(7, dbImagePath);
+            String dataPath = getServletContext().getRealPath("/WEB-INF/data/cars.txt");
+            File file = new File(dataPath);
 
-            ps.executeUpdate();
-            response.sendRedirect("SearchServlet?brand=&msg=added");
+            try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(file, true)))) {
+                out.println(carRecord);
+            }
+            response.sendRedirect("SearchServlet");
         } catch (Exception e) {
-            e.printStackTrace();
+            response.getWriter().println("File upload error exception occurred: " + e.getMessage());
         }
+    }
+
+    private String getFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] tokens = contentDisp.split(";");
+        for (String token : tokens) {
+            if (token.trim().startsWith("filename")) {
+                return token.substring(token.indexOf("=") + 2, token.length() - 1);
+            }
+        }
+        return "car.jpg";
     }
 }

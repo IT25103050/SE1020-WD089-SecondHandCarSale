@@ -1,102 +1,71 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>WD089 - Add Car Listing</title>
+    <title>AutoMart - Sell Your Car</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background: #f0f2f5;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* This wrapper ensures the card stays centered below the navbar */
-        .main-content-wrapper {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .container-card {
-            width: 100%;
-            max-width: 550px;
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        h2 { color: #1e293b; font-weight: 700; margin-bottom: 25px; text-align: center; }
-        .btn-post { background: #1d4ed8; color: white; border: none; padding: 12px; font-weight: bold; }
-        .btn-post:hover { background: #1e40af; color: white; }
-        input, select { margin-bottom: 10px !important; }
+        body { background-color: #f4f6f9; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .navbar { background-color: #1e293b !important; }
+        .form-card { border: none; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm py-3">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="SearchServlet?brand=">
-            🚗 AutoFleet <span class="text-white">Manager</span>
-        </a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="SearchServlet?brand=">Inventory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="add-car.jsp">Add New Car</a>
-                </li>
-            </ul>
-        </div>
+        <a class="navbar-brand fw-bold fs-4" href="SearchServlet"><i class="fa-solid fa-car-side text-primary me-2"></i>AutoMart</a>
+        <div class="navbar-nav ms-auto"><a class="nav-link active" href="SearchServlet">Back to Fleet</a></div>
     </div>
 </nav>
 
-<div class="main-content-wrapper">
-    <div class="container-card">
-        <h2>Add New Car Advertisement</h2>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card p-5 form-card bg-white">
+                <h3 class="fw-bold mb-4 text-center">Submit Vehicle Details</h3>
 
-        <form action="AddCarServlet" method="post" enctype="multipart/form-data">
+                <form action="AddCarServlet" method="POST" enctype="multipart/form-data">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">BRAND</label>
+                            <input type="text" name="brand" class="form-control bg-light" placeholder="e.g. Toyota" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">MODEL</label>
+                            <input type="text" name="model" class="form-control bg-light" placeholder="e.g. Corolla" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">YEAR</label>
+                            <input type="number" name="year" class="form-control bg-light" placeholder="2019" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">MILEAGE (KM)</label>
+                            <input type="number" name="mileage" class="form-control bg-light" placeholder="30000" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">FUEL TYPE</label>
+                            <select name="fuel_type" class="form-select bg-light">
+                                <option value="Petrol">Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">PRICE (LKR)</label>
+                            <input type="number" name="price" class="form-control bg-light" placeholder="9500000" required>
+                        </div>
 
-            <div class="mb-3">
-                <label class="form-label fw-bold small text-muted">CAR IMAGE</label>
-                <input type="file" name="car_image" class="form-control" accept="image/*" required>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold text-muted">UPLOAD IMAGE FROM THIS DEVICE</label>
+                            <input type="file" name="car_image" class="form-control bg-light" accept="image/*" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-4 py-2 fw-bold">Publish Listing</button>
+                </form>
             </div>
-
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <input type="text" name="brand" class="form-control" placeholder="Brand" required>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" name="model" class="form-control" placeholder="Model" required>
-                </div>
-            </div>
-
-            <input type="number" name="year" class="form-control" placeholder="Manufacture Year" required>
-            <input type="number" name="price" class="form-control" placeholder="Price (LKR)" required>
-            <input type="number" name="mileage" class="form-control" placeholder="Mileage (km)" required>
-
-            <select name="fuel_type" class="form-select">
-                <option value="Petrol">Petrol</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Hybrid">Hybrid</option>
-                <option value="Electric">Electric</option>
-            </select>
-
-            <button type="submit" class="btn btn-post w-100 rounded-3 mt-3">Post Listing</button>
-
-            <div class="text-center mt-3">
-                <a href="SearchServlet?brand=" class="text-decoration-none text-muted small">← Back to Search</a>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
