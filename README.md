@@ -4,6 +4,95 @@
 
 ---
 
+## 🏗️ Architecture & File Structure
+
+The project implements a clean domain-driven module structure organized within the base namespace `com.carplatform`:
+
+```text
+untitled/
+├── pom.xml                                   <-- Spring Boot 3.x, Tomcat Jasper, JSTL dependencies
+├── .gitignore                                <-- Project build exclusions
+├── README.md                                 <-- Architectural manual & Schema maps
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/carplatform/
+        │       ├── AutoMartApplication.java  <-- Entry point bootstrap runner
+        │       ├── controller/               <-- Highly cohesive web controller tier
+        │       │   ├── HomeController.java
+        │       │   ├── AuthController.java
+        │       │   ├── DashboardController.java
+        │       │   ├── CarController.java
+        │       │   ├── TransactionController.java
+        │       │   ├── AdminController.java
+        │       │   ├── SellerDealerController.java
+        │       │   └── ReviewController.java
+        │       ├── dao/                      <-- Data Access Objects resolving pipe-delimited persistence
+        │       │   ├── UserDAO.java
+        │       │   ├── CarDAO.java
+        │       │   ├── TransactionDAO.java
+        │       │   ├── PaymentDAO.java
+        │       │   └── ReviewDAO.java
+        │       ├── model/                    <-- Core OOP Model Tier (Abstraction, Inheritance, Polymorphism)
+        │       │   ├── User.java             <-- Abstract base class (Buyer, Seller, Dealer, Admin subclasses)
+        │       │   ├── Car.java              <-- Abstract base class (PetrolCar, DieselCar, ElectricCar subclasses)
+        │       │   ├── Transaction.java      <-- Escrow transactional tracking record
+        │       │   ├── Payment.java          <-- Abstract base class (CashPayment, OnlinePayment subclasses)
+        │       │   └── Review.java           <-- Abstract base class (CarReview, SellerReview subclasses)
+        │       └── util/                     <-- Secure and modular utility layers
+        │           ├── FileHandler.java      <-- Thread-safe file append and read wrappers
+        │           ├── IDGenerator.java      <-- Sequential auto-increment prefix assignment engine
+        │           ├── PasswordUtil.java     <-- MessageDigest SHA-256 hash transformations
+        │           ├── ValidationUtil.java   <-- Input formatting validation filters
+        │           └── FileUploadUtil.java   <-- MultipartFile local disk persister
+        │
+        ├── resources/
+        │   └── application.properties        <-- Internal routing configurations (/WEB-INF/jsp/ view resolver)
+        │
+        └── webapp/
+            ├── css/
+            │   └── style.css                 <-- Rich custom CSS (Glassmorphism, Gradients, Dynamic Animations)
+            ├── js/
+            │   └── script.js                 <-- Interactive client side interface hooks
+            ├── uploads/                      <-- Persistent directory for file media allocation
+            └── WEB-INF/
+                ├── data/                     <-- Secure persistence layer containing pre-seeded catalog elements
+                │   ├── users.txt
+                │   ├── cars.txt
+                │   ├── transactions.txt
+                │   ├── payments.txt
+                │   └── reviews.txt
+                └── jsp/                      <-- Internal protected view components
+                    ├── fragments/            <-- Modular design interface blocks
+                    │   ├── layout-header.jsp
+                    │   ├── layout-scripts.jsp
+                    │   ├── navbar.jsp
+                    │   ├── sidebar.jsp
+                    │   └── footer.jsp
+                    ├── index.jsp             <-- Showcase catalog landing portal
+                    ├── car-list.jsp          <-- Multi-parameter filtered inventory roster
+                    ├── car-details.jsp       <-- Telemetry views with dynamic depreciation residual indicators
+                    ├── login.jsp             <-- Session scope authentication block
+                    ├── register.jsp          <-- Subclass role binding provisioning hub
+                    ├── buyer-dashboard.jsp   <-- Personalized purchaser transaction feeds
+                    ├── seller-dashboard.jsp  <-- Private merchant fleet allocation center
+                    ├── dealer-dashboard.jsp  <-- High-end enterprise certified showroom
+                    ├── admin-dashboard.jsp   <-- Central system oversight dashboard
+                    ├── add-car.jsp           <-- Asset creation hub supporting multipart image allocations
+                    ├── edit-car.jsp          <-- Realtime pricing and availability modifiers
+                    ├── my-listings.jsp       <-- Owner fleet administration array
+                    ├── transactions.jsp      <-- History tracking transaction ledger
+                    ├── transaction-details.jsp <-- Verification clearance audit interface
+                    ├── reviews.jsp           <-- Public satisfaction logging feedback matrix
+                    ├── add-review.jsp        <-- Target-context injected feedback appender
+                    ├── manage-users.jsp      <-- Roster oversight and status modifiers
+                    ├── manage-cars.jsp       <-- Total fleet inventory tracker
+                    ├── pending-cars.jsp      <-- Verification pipeline resolving manual overrides
+                    ├── pending-dealers.jsp   <-- Enterprise showroom permission hub
+                    ├── manage-transactions.jsp <-- Escrow system tracking hub
+                    └── manage-reviews.jsp    <-- Instant satisfaction log droppers
+```
+
 ---
 
 ## 🧬 Object-Oriented Design Principles (OOP)
@@ -64,6 +153,15 @@ Data files utilize pipe-separated formats (`|`). **Never** alter the sequence or
 ```
 *   `reviewType`: `CAR` or `SELLER`.
 *   If `reviewType` is `SELLER`, `carId` remains blank. If `CAR`, `sellerId` captures listing representative tags.
+
+---
+
+## 🚀 Execution & Verification Guides
+
+### Running Locally
+Right-click AutoMartApplication.java and run it.
+Then open:
+http://localhost:8080/
 
 
 ---
